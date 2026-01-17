@@ -10,7 +10,7 @@ from typing import Collection, Dict, Mapping, Sequence, Tuple
 import pandas as pd
 from tqdm import trange
 
-from chemicalx.data.utils import get_tdc_ddi, write_contexts_json, write_drugs_json
+from chemointeract.data.utils import get_tdc_ddi, write_contexts_json, write_drugs_json
 
 __all__ = [
     "OUTPUT",
