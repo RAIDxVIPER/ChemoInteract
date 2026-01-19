@@ -1,9 +1,9 @@
 """Example with CASTER."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.loss import CASTERSupervisedLoss
-from chemicalx.models import CASTER
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.loss import CASTERSupervisedLoss
+from chemointeract.models import CASTER
 
 
 def main():

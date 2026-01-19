@@ -1,12 +1,12 @@
 """Example with DeepDrug."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import DeepDrug
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import DeepDrug
 
 
 def main():
-    """Train and evaluate the EPGCNDS model."""
+    """Train and evaluate the DeepDrug model."""
     dataset = DrugCombDB()
     model = DeepDrug()
     results = pipeline(

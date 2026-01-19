@@ -1,8 +1,8 @@
 """Example with DeepDDI."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugbankDDI
-from chemicalx.models import DeepDDI
+from chemointeract import pipeline
+from chemointeract.data import DrugbankDDI
+from chemointeract.models import DeepDDI
 
 
 def main():

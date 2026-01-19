@@ -1,12 +1,12 @@
-"""Example with DeepDDs."""
+"""Example with DeepDDS."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import DeepDDS
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import DeepDDS
 
 
 def main():
-    """Train and evaluate the DeepDDs model."""
+    """Train and evaluate the DeepDDS model."""
     dataset = DrugCombDB()
     model = DeepDDS(
         context_channels=dataset.context_channels,

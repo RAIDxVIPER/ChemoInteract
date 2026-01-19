@@ -7,9 +7,9 @@ of the BCE loss.
 
 from torch import nn
 
-from chemicalx import pipeline
-from chemicalx.data import OncoPolyPharmacology
-from chemicalx.models import DeepSynergy
+from chemointeract import pipeline
+from chemointeract.data import OncoPolyPharmacology
+from chemointeract.models import DeepSynergy
 
 
 def main():
