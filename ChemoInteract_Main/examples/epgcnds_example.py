@@ -1,14 +1,15 @@
 """Example with EPGCNDS."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import EPGCNDS
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import EPGCNDS
 
 
 def main():
     """Train and evaluate the EPGCNDS model."""
     dataset = DrugCombDB()
     model = EPGCNDS()
+    
     results = pipeline(
         dataset=dataset,
         model=model,
@@ -19,6 +20,7 @@ def main():
         drug_features=True,
         drug_molecules=True,
     )
+    
     results.summarize()
 
 

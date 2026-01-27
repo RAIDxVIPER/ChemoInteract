@@ -1,14 +1,18 @@
 """Example with DeepSynergy."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import DeepSynergy
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import DeepSynergy
 
 
 def main():
     """Train and evaluate the DeepSynergy model."""
     dataset = DrugCombDB()
-    model = DeepSynergy(context_channels=dataset.context_channels, drug_channels=dataset.drug_channels)
+    model = DeepSynergy(
+        context_channels=dataset.context_channels,
+        drug_channels=dataset.drug_channels
+    )
+    
     results = pipeline(
         dataset=dataset,
         model=model,
@@ -21,6 +25,7 @@ def main():
             "roc_auc",
         ],
     )
+    
     results.summarize()
 
 

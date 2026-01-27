@@ -1,14 +1,17 @@
 """Example with MatchMaker."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import MatchMaker
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import MatchMaker
 
 
 def main():
     """Train and evaluate the MatchMaker model."""
     dataset = DrugCombDB()
-    model = MatchMaker(context_channels=dataset.context_channels, drug_channels=dataset.drug_channels)
+    model = MatchMaker(
+        context_channels=dataset.context_channels,
+        drug_channels=dataset.drug_channels
+    )
 
     results = pipeline(
         dataset=dataset,
@@ -20,6 +23,7 @@ def main():
         drug_molecules=False,
         metrics=["roc_auc"],
     )
+    
     results.summarize()
 
 

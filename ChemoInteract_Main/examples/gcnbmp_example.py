@@ -1,8 +1,8 @@
 """Example with GCNBMP."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import GCNBMP
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import GCNBMP
 
 
 def main():
@@ -20,6 +20,7 @@ def main():
         drug_features=True,
         drug_molecules=True,
     )
+    
     results.summarize()
 
 
