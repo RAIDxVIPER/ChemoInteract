@@ -4,7 +4,7 @@ import unittest
 
 import torch
 
-from chemicalx.utils import segment_softmax
+from chemointeract.utils import segment_softmax
 
 
 class TestPipeline(unittest.TestCase):

@@ -4,7 +4,7 @@ import pathlib
 import unittest
 from typing import ClassVar
 
-from chemicalx.data import (
+from chemointeract.data import (
     DatasetLoader,
     DrugbankDDI,
     DrugComb,

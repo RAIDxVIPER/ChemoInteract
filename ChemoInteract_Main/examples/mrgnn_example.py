@@ -1,8 +1,8 @@
 """Example with MRGNN."""
 
-from chemicalx import pipeline
-from chemicalx.data import DrugCombDB
-from chemicalx.models import MRGNN
+from chemointeract import pipeline
+from chemointeract.data import DrugCombDB
+from chemointeract.models import MRGNN
 
 
 def main():

@@ -6,10 +6,10 @@ import torch
 from torchdrug.layers import MeanReadout
 from torchdrug.models import GraphConvolutionalNetwork
 
-from chemicalx.compat import PackedGraph
-from chemicalx.constants import TORCHDRUG_NODE_FEATURES
-from chemicalx.data import DrugPairBatch
-from chemicalx.models import Model
+from chemointeract.compat import PackedGraph
+from chemointeract.constants import TORCHDRUG_NODE_FEATURES
+from chemointeract.data import DrugPairBatch
+from chemointeract.models import Model
 
 __all__ = [
     "MRGNN",

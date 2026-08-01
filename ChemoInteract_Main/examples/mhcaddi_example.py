@@ -1,8 +1,8 @@
 """Example with MHCADDI."""
 
-from chemicalx import pipeline
-from chemicalx.data.datasetloader import TwoSides
-from chemicalx.models.mhcaddi import MHCADDI
+from chemointeract import pipeline
+from chemointeract.data.datasetloader import TwoSides
+from chemointeract.models.mhcaddi import MHCADDI
 
 
 def main():

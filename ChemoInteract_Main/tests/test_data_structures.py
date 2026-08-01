@@ -7,7 +7,7 @@ import pandas as pd
 import torch
 from torchdrug.data import Molecule
 
-from chemicalx.data import ContextFeatureSet, DrugFeatureSet, LabeledTriples
+from chemointeract.data import ContextFeatureSet, DrugFeatureSet, LabeledTriples
 
 
 class TestContextFeatureSet(unittest.TestCase):

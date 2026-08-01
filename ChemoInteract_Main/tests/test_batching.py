@@ -3,7 +3,7 @@
 import unittest
 from typing import ClassVar
 
-from chemicalx.data import DatasetLoader, DrugCombDB
+from chemointeract.data import DatasetLoader, DrugCombDB
 
 
 class TestGeneratorDrugCombDB(unittest.TestCase):

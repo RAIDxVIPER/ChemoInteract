@@ -5,7 +5,7 @@ import unittest
 import torch.cuda
 from torchdrug.data import Molecule
 
-from chemicalx.compat import Graph, PackedGraph
+from chemointeract.compat import Graph, PackedGraph
 
 
 @unittest.skipUnless(torch.cuda.is_available(), "can not test compatibility layer without a GPU available")

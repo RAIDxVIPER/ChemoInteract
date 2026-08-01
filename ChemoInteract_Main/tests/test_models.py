@@ -7,11 +7,11 @@ from typing import ClassVar
 import torch
 from class_resolver import Resolver
 
-import chemicalx.models
-from chemicalx import pipeline
-from chemicalx.data import DatasetLoader, DrugComb, DrugCombDB
-from chemicalx.loss import CASTERSupervisedLoss
-from chemicalx.models import (
+import chemointeract.models
+from chemointeract import pipeline
+from chemointeract.data import DatasetLoader, DrugComb, DrugCombDB
+from chemointeract.loss import CASTERSupervisedLoss
+from chemointeract.models import (
     CASTER,
     EPGCNDS,
     GCNBMP,
@@ -74,7 +74,7 @@ class MetaModelTestCase(unittest.TestCase):
 
     @staticmethod
     def _iter_classes():
-        for name, model_cls in sorted(vars(chemicalx.models).items()):
+        for name, model_cls in sorted(vars(chemointeract.models).items()):
             if not isinstance(model_cls, type) or model_cls is Resolver:
                 continue
             yield name, model_cls
@@ -85,7 +85,7 @@ class MetaModelTestCase(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertTrue(
                     issubclass(model_cls, (Model, UnimplementedModel)),
-                    msg=f"Model {model_cls} does not inherit from the base model class `chemicalx.models.Model`",
+                    msg=f"Model {model_cls} does not inherit from the base model class `chemointeract.models.Model`",
                 )
 
     def test_defaults(self):
