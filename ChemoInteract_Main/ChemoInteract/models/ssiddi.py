@@ -1,4 +1,4 @@
-"""An implementation of the MR-GNN model."""
+"""An implementation of the SSI-DDI model."""
 
 from typing import Any
 
@@ -12,19 +12,12 @@ from chemointeract.data import DrugPairBatch
 from chemointeract.models import Model
 
 __all__ = [
-    "MRGNN",
+    "SSIDDI",
 ]
 
 
-class MRGNN(Model):
-    """An implementation of the MR-GNN model from [xu2019]_.
-
-    .. seealso:: This model was suggested in https://github.com/AstraZeneca/chemointeract/issues/12
-
-    .. [xu2019] Xu, N., *et al.* (2019). `MR-GNN: Multi-resolution and dual graph neural network for
-       predicting structured entity interactions <https://doi.org/10.24963/ijcai.2019/551>`_.
-       *IJCAI International Joint Conference on Artificial Intelligence*, 2019, 3968–3974.
-    """
+class SSIDDI(Model):
+    """An implementation of the SSI-DDI model."""
 
     def __init__(
         self,
@@ -35,7 +28,7 @@ class MRGNN(Model):
         layer_count: int = 4,
         out_channels: int = 1,
     ):
-        """Instantiate the MRGNN model.
+        """Instantiate the SSIDDI model.
 
         :param molecule_channels: The number of molecular features.
         :param hidden_channels: The number of graph convolutional filters.

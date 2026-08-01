@@ -9,7 +9,6 @@ import pandas as pd
 import pystow
 import rdkit
 from rdkit.Chem import AllChem, DataStructs
-from tdc.multi_pred import DDI, DrugSyn
 
 __all__ = [
     "get_tdc_synergy",
@@ -26,6 +25,7 @@ LABELS_FILE_NAME = "labeled_triples.tsv"
 
 def get_tdc_synergy(name: str) -> Path:
     """Download the synergy dataset from TDC and return the standardized directory it went to."""
+    from tdc.multi_pred import DrugSyn
     directory = pystow.join("tdc", DrugSyn.__name__.lower())
     DrugSyn(name=name, path=directory.as_posix())
     return directory
@@ -33,6 +33,7 @@ def get_tdc_synergy(name: str) -> Path:
 
 def get_tdc_ddi(name: str) -> Path:
     """Download the DDI dataset from TDC and return the standardized directory it went to."""
+    from tdc.multi_pred import DDI
     directory = pystow.join("tdc", DDI.__name__.lower())
     DDI(name=name, path=directory.as_posix())
     return directory
