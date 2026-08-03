@@ -1,0 +1,209 @@
+% ============================================================
+%  ChemoInteract Documentation - Part 3
+%  Title: Interview Prep, Viva Q&A, Presentation & Resume Guide
+%  Compile with: pdflatex ChemoInteract_Part3_Interview_and_Viva_Prep.tex
+% ============================================================
+
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{setspace}
+
+\tcbuselibrary{breakable,skins}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!70!black,
+  urlcolor=cyan!70!black,
+  pdftitle={ChemoInteract Part 3: Interview and Viva Prep},
+  pdfauthor={Ronit},
+  pdfstartview=FitH,
+}
+
+% ── Colours ──────────────────────────────────────────────────
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+\definecolor{deepblue}{RGB}{0,55,120}
+\definecolor{chemopurple}{RGB}{91,50,160}
+\definecolor{chemogreen}{RGB}{16,140,100}
+\definecolor{chemoorange}{RGB}{230,100,20}
+\definecolor{noteyellow}{RGB}{255,248,200}
+\definecolor{tipegreen}{RGB}{210,245,215}
+\definecolor{warnorange}{RGB}{255,235,210}
+\definecolor{questionblue}{RGB}{210,230,255}
+
+% ── tcolorbox styles ─────────────────────────────────────────
+\tcbset{
+  questionbox/.style={enhanced,breakable,colback=questionblue,
+    colframe=blue!60!black,fonttitle=\bfseries,
+    left=6pt,right=6pt,top=4pt,bottom=4pt},
+  answerbox/.style={enhanced,breakable,colback=white,
+    colframe=blue!30!black,
+    fonttitle=\bfseries\color{blue!60!black},title={Model Answer},
+    left=6pt,right=6pt},
+  vivabox/.style={enhanced,breakable,colback=questionblue!40,
+    colframe=deepblue,fonttitle=\bfseries,title={Viva Question},
+    left=6pt,right=6pt},
+  cheatbox/.style={enhanced,breakable,colback=chemopurple!8,
+    colframe=chemopurple,fonttitle=\bfseries\color{white},
+    coltitle=white,attach boxed title to top left,
+    boxed title style={colback=chemopurple,rounded corners},
+    left=6pt,right=6pt},
+}
+
+% ── Header / Footer ──────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{chemopurple}{\textbf{ChemoInteract --- Part 3}}}
+\fancyhead[R]{\small\textcolor{gray}{Interview, Viva \& Presentation Guide}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% ── Section styles ───────────────────────────────────────────
+\titleformat{\section}{\Large\bfseries\color{deepblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{chemopurple}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{chemogreen}}{\thesubsubsection}{1em}{}
+
+\setstretch{1.2}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% ── Title Block ──────────────────────────────────────────────
+\begin{center}
+{\Huge\bfseries\color{deepblue} ChemoInteract}\\[0.3cm]
+{\Large\bfseries\color{chemopurple} Complete Documentation --- Part 3 of 3}\\[0.2cm]
+{\large\textbf{Interview Q\&A, College Viva Preparation, Presentation Scripts, Resume & Roadmap}}\\[0.4cm]
+\begin{tcolorbox}[enhanced,width=14cm,colback=deepblue!5,colframe=deepblue,boxrule=1pt,arc=5pt]
+\centering
+\begin{tabular}{llll}
+\textbf{Author:} & Ronit & \textbf{Version:} & 0.1.0 \\
+\textbf{Framework:} & PyTorch 2.0+ & \textbf{Focus:} & Interview \& Viva Prep \\
+\end{tabular}
+\end{tcolorbox}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% ================================================================
+\section{Interview Preparation Guide}\label{sec:interview}
+
+\subsection{HR \& Project Overview Questions}
+
+\begin{tcolorbox}[questionbox,title={Q1: Tell me about your final year project.}]
+\end{tcolorbox}
+\begin{tcolorbox}[answerbox]
+``I developed ChemoInteract, a modular deep learning Python library for predicting drug-drug interactions. Adverse drug reactions cause thousands of preventable hospitalizations annually in polypharmacy patients. ChemoInteract unifies 11 published deep learning architectures --- ranging from simple FC networks to Graph Neural Networks and cross-drug Attention models --- under a single plug-and-play training pipeline. A researcher can benchmark any model across 5 auto-downloaded datasets with a single line of code.''
+\end{tcolorbox}
+
+\begin{tcolorbox}[questionbox,title={Q2: What was your biggest technical challenge?}]
+\end{tcolorbox}
+\begin{tcolorbox}[answerbox]
+``Making 11 models with completely different input requirements work through one unified pipeline. Some take fingerprint vectors; others take molecular graphs. Some need cell line context; others do not. I solved this by implementing the \textbf{Template Method} pattern via an abstract \texttt{unpack()} method on the \texttt{Model} base class. Each model declares what it extracts from the \texttt{DrugPairBatch}, keeping the pipeline completely decoupled from model internals.''
+\end{tcolorbox}
+
+\subsection{Technical Questions & Model Answers}
+
+\begin{tcolorbox}[questionbox,title={Q3: Why use ROC-AUC instead of Accuracy?}]
+\end{tcolorbox}
+\begin{tcolorbox}[answerbox]
+``Drug interaction datasets are heavily class-imbalanced (far more non-interacting pairs than interacting ones). A naive model predicting all zeros gets high accuracy but is clinically useless. ROC-AUC measures the probability that a randomly chosen positive pair receives a higher prediction score than a randomly chosen negative pair, making it threshold-independent and robust to class imbalance.''
+\end{tcolorbox}
+
+\begin{tcolorbox}[questionbox,title={Q4: Explain \texttt{@lru\_cache} in your data loader.}]
+\end{tcolorbox}
+\begin{tcolorbox}[answerbox]
+``\texttt{@lru\_cache(maxsize=1)} memoises dataset loading methods. The first call downloads and parses data from GitHub/disk; subsequent calls return the cached in-memory objects instantly, avoiding redundant network I/O during repeated training runs.''
+\end{tcolorbox}
+
+% ================================================================
+\section{College Viva Questions and Answers}\label{sec:viva}
+
+\begin{tcolorbox}[vivabox]
+V1: What does DDI stand for?
+\end{tcolorbox}
+Drug-Drug Interaction: when the pharmacological effect of one drug is altered by another drug co-administered in the body.
+
+\begin{tcolorbox}[vivabox]
+V2: How many deep learning models are in ChemoInteract?
+\end{tcolorbox}
+11 models: DeepSynergy, DeepDDI, MatchMaker (FC models); DeepDDS, DeepDrug, CASTER, GCNBMP, EPGCN-DS, MR-GNN (GNN models); MHCADDI, SSI-DDI (Attention models).
+
+\begin{tcolorbox}[vivabox]
+V3: What is a SMILES string?
+\end{tcolorbox}
+Simplified Molecular Input Line Entry System: an ASCII text representation of chemical structures (e.g. Aspirin is \texttt{CC(=O)Oc1ccccc1C(=O)O}). TorchDrug parses SMILES strings into molecular graphs.
+
+\begin{tcolorbox}[vivabox]
+V4: What is a Morgan Fingerprint?
+\end{tcolorbox}
+A 256-bit binary vector encoding the presence of circular chemical substructures up to radius 2 bonds around each atom.
+
+\begin{tcolorbox}[vivabox]
+V5: What does \texttt{model.eval()} do?
+\end{tcolorbox}
+Disables Dropout (all neurons stay active) and locks Batch Normalization to use stored running statistics during evaluation.
+
+\begin{tcolorbox}[vivabox]
+V6: What is the Closed-World Assumption (CWA)?
+\end{tcolorbox}
+Assuming that any unrecorded drug pair in database records is non-interacting (label = 0.0) during negative sampling.
+
+% ================================================================
+\section{Presentation Scripts}\label{sec:presentation}
+
+\subsection{2-Minute Elevator Pitch}
+``I built ChemoInteract, a PyTorch library using deep learning to predict dangerous drug-drug interactions. Adverse drug reactions cause thousands of hospitalizations annually.
+
+My primary contribution is unifying 11 published deep learning architectures --- from basic neural networks to GNNs with cross-drug co-attention --- into a single framework. Any model can be trained on any of 5 benchmark datasets with a single line of code.
+
+The library automatically handles GPU acceleration, dataset downloading, and metric evaluation, achieving ROC-AUC scores up to 0.87 on benchmark datasets.''
+
+\subsection{30-Second Pitch}
+``ChemoInteract is an open-source PyTorch library that uses Graph Neural Networks and AI to predict drug interactions and synergies. It unifies 11 published deep learning models across 5 datasets in a single line of code, enabling rapid computational drug discovery.''
+
+% ================================================================
+\section{Resume Preparation}\label{sec:resume}
+
+\subsection{Resume Bullet Points}
+\begin{itemize}
+  \item \textbf{ChemoInteract Framework:} Designed and developed a modular PyTorch library unifying \textbf{11 published deep learning models} (GNNs, MLPs, Co-Attention) for drug interaction, polypharmacy side-effect, and synergy prediction.
+  \item \textbf{Modular Pipeline:} Implemented Template Method pattern via abstract \texttt{unpack()} method, reducing experiment training code from 100+ lines of boilerplate to a 1-line \texttt{pipeline()} call.
+  \item \textbf{Compatibility Layer:} Engineered GPU compatibility patches for TorchDrug \texttt{PackedGraph} objects, resolving tensor transfer issues across PyTorch versions.
+  \item \textbf{Benchmarking \& Testing:} Integrated 5 auto-cached datasets with \texttt{@lru\_cache} and built a 4-file \texttt{pytest} suite verifying forward passes and data structures.
+\end{itemize}
+
+\subsection{ATS Keywords}
+PyTorch, Deep Learning, Graph Neural Networks (GNN), GCN, Drug-Drug Interaction (DDI), Molecular Representation Learning, RDKit, SMILES, Morgan Fingerprints, Co-Attention, Binary Cross-Entropy, ROC-AUC, scikit-learn, Python, TorchDrug, Unit Testing, Modular Software Architecture.
+
+% ================================================================
+\section{Future Roadmap & Quick Cheat Sheet}\label{sec:cheatsheet}
+
+\begin{tcolorbox}[cheatbox,title={ChemoInteract Quick Reference Cheat Sheet}]
+\textbf{Library Entrypoint:} \texttt{from chemointeract import pipeline} \\
+\textbf{Execution:} \texttt{results = pipeline(dataset="drugcombdb", model="deepsynergy", epochs=100)} \\
+\textbf{Core Design Patterns:} Template Method (\texttt{unpack()}), Resolver Pattern (\texttt{class-resolver}), Caching (\texttt{@lru\_cache}), Monkey-patch Shim (\texttt{compat.py}). \\
+\textbf{Key Datasets:} DrugCombDB, DrugComb, TwoSides, DrugbankDDI, OncoPolyPharmacology. \\
+\textbf{Top Models:} DeepSynergy (FC baseline), DeepDDS (GCN), MHCADDI (Cross-drug Attention), GCNBMP (FFT Circular Correlation).
+\end{tcolorbox}
+
+\end{document}
